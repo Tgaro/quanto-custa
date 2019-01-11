@@ -19,7 +19,7 @@ const deleteDestinos = async () => {
 	refreshPage()
 }
 
-const deletePlanos = () => {
+const deletePlanos = async () => {
 
 	const itens = checkBoxes()
 	const url = `${host.value}/planos/delete/${itens}`
