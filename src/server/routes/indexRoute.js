@@ -8,15 +8,20 @@ module.exports = app => {
 		const planos = await controllerPlanos.readPlano()
 		const origens = await controllerDestinos.readOrigens()
 		const destinos = await controllerDestinos.readDestinos()
-		res.status(200)
-		res.render('index', 
-			{
-				planos: planos,
-				origens: origens,
-				destinos: destinos,
-				host: appHost
-			}
-		)
+
+		if(planos == undefined || origens == undefined || destinos == undefined)
+			res.redirect('/home')
+		else{
+			res.status(200)
+			res.render('index', 
+				{
+					planos: planos,
+					origens: origens,
+					destinos: destinos,
+					host: appHost
+				}
+			)
+		}
 	})
 
 	app.get('/', (req, res) => {

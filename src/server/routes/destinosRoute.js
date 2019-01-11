@@ -6,10 +6,14 @@ module.exports = app => {
 
 		const destinos = await controller.readDestino()
 		res.status(200)
-		res.render('destinos', {
-			destinos : destinos,
-			host: appHost
-		})
+		if (destinos == undefined)
+			res.redirect('/destinos')
+		else{
+			res.render('destinos', {
+				destinos : destinos,
+				host: appHost
+			})
+		}		
 	})
 
 	app.get('/destinos/list', async (req, res) => {

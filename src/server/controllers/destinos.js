@@ -70,11 +70,14 @@ const readOrigens = async () => {
 
 	let origens = []
 	const destinos = await readDestino()
-	destinos.forEach(item => origens.push(item.origem))
+	if(!(destinos == undefined)){
+		destinos.forEach(item => origens.push(item.origem))
 
-	origens = origens.filter((item, pos) => {
-	    return origens.indexOf(item) == pos;
-	})
+		origens = origens.filter((item, pos) => {
+		    return origens.indexOf(item) == pos;
+		})
+	}
+	
 	return origens
 }
 
@@ -82,11 +85,15 @@ const readDestinos = async () => {
 
 	let destino = []
 	const destinos = await readDestino()
-	destinos.forEach(item => destino.push(item.destino))
 
-	destino = destino.filter((item, pos) => {
-	    return destino.indexOf(item) == pos;
-	})
+	if(!(destinos == undefined)){
+
+		destinos.forEach(item => destino.push(item.destino))
+
+		destino = destino.filter((item, pos) => {
+		    return destino.indexOf(item) == pos;
+		})
+	}
 	return destino
 }
 
