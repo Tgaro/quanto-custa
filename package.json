@@ -5,11 +5,16 @@
   "main": "server.js",
   "scripts": {
     "test": "nyc --reporter=text mocha --exit",
-    "start": "nodemon"
+    "start": "babel-node server.js",
+    "build": "babel src --out-dir dist"
   },
   "author": "Tiago Aro",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
