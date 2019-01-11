@@ -7,8 +7,7 @@ const deleteDestinos = () => {
     	method: 'delete'
   	})
   	.then(response => refreshPage())
-  	refreshPage()
-
+  	.catch(error => M.toast({html: error, classes: 'rounded'}))
 }
 
 const deletePlanos = () => {
@@ -20,8 +19,7 @@ const deletePlanos = () => {
     	method: 'delete'
   	})
   	.then(response => refreshPage())
-  	refreshPage()
-
+  	.catch(error => M.toast({html: error, classes: 'rounded'}))
 }
 
 const refreshPage = () => {
