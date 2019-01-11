@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<%include ../partials/head %>
+	<%include ../partials/header %>
+
+	<body>
+		<main style="margin-top: 3%">
+			<input type="hidden" name="host" id="host" value="<%=host%>">
+			<div class="row">
+				<div class="card col s12 m6 offset-m3">
+					<div class="card-title center"><span><h4>Sobre o produto FaleMais.</h4></span></div>
+					<div class="card-content">		
+						<div class="row">
+							<div>
+								<table class="responsive-table centered striped">
+									<thead>
+										<tr>
+											<th><b>Excluir</b></th>
+											<th><b>ID</b></th>
+											<th><b>Desconto de minutos</b></th>
+											<th><b>Descrição</b></th>								
+										</tr>
+									</thead>
+
+									<tbody>
+										<%planos.forEach( item => { %>
+										<tr>
+											<td>
+												<p>
+											      <label>
+											        <input type="checkbox" value="<%=item.id%>"/>
+											        <span></span>
+											      </label>
+											    </p>
+											</td>											
+											<td><%=item.id%></td>
+											<td><%=item.desconto%></td>
+											<td><%=item.plano%></td>
+										</tr>
+										<%})%>
+									</tbody>
+								</table>
+							</div>
+
+							<button id="btnDelete" name="btnDelete" class="btn waves-effect waves-light red lighten-2" onclick="deletePlanos()">
+							    Excluir
+							</button>
+						</div>
+						<div class="row">
+							<form action="/planos/create" method="post">
+								<div class="card">
+									<div class="card-title center"><span>Adicionar plano</span></div>
+									<div class="card-content">
+										<div class="row">
+											<div class="col s12 m6">
+												<input placeholder="Desconto de tempo" id="desconto" name="desconto" type="number" min="1" class="validate">
+											</div>
+											<div class="col s12 m6">
+												<input placeholder="Plano" id="plano" name="plano" type="text" class="validate">
+											</div>
+										</div>
+									</div>
+									<div class="card-action center">
+										<button id="btnAdd" name="btnAdd" class="btn waves-effect waves-light" type="submit">
+										    Adicionar
+										</button>
+									</div>
+								</div>
+							</form>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+	<%include ../partials/footer %>
+	</body>
+
+</html>

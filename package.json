@@ -1,0 +1,26 @@
+{
+  "name": "cotar",
+  "version": "1.0.0",
+  "description": "Produto para cotar preços",
+  "main": "server.js",
+  "scripts": {
+    "test": "nyc --reporter=text mocha --exit",
+    "start": "nodemon"
+  },
+  "author": "Tiago Aro",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "consign": "^0.1.6",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mocha": "^5.2.0",
+    "mongoose": "^5.4.3",
+    "nodemon": "^1.18.9",
+    "nyc": "^13.1.0",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
+  }
+}

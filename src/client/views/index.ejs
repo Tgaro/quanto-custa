@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+
+	<% include ../partials/head %>
+	<% include ../partials/header %>
+
+	<body>
+
+		<main style="margin-top: 3%;">	
+			<form id="cotacaoForm" name="cotacaoForm" method="post" action="" onsubmit="return false">
+				<div class="row">
+					<div class="card col s12 m6 offset-m3">
+						<div class="card-title center"><span><h4>Faça uma cotação.</h4></span></div>
+						<div class="card-content">
+							<div class="row">
+								<div class="input-field col s12 m6 center">
+									<select id="origem" name="origem">
+										<option value="default" selected>Selecione código de origem</option>
+										<% origens.forEach(item => { %>
+										<option value=<%=item%> ><%=item%></option>
+										<%})%>
+									</select>
+									<label for="origem">Origem</label>
+								</div>
+								<div class="input-field col s12 m6 center">
+									<select id="destino" name="destino">
+										<option value="" selected>Selecione código de destino</option>
+										<% destinos.forEach(item => { %>
+										<option value=<%=item%> ><%=item%></option>
+										<%})%>
+									</select>
+									<label for="destino">Destino</label>
+								</div>
+							</div>
+
+				      	<div class="row">
+					        <div class="input-field col s12 m6 center">
+					          	<input placeholder="Tempo em minutos" id="tempo" name="tempo" type="number" min="1" class="validate">
+	  							<label for="tempo">Tempo da Ligação</label>
+					        </div>
+					        <div class="input-field col s12 m6 center">
+								<select id="plano" name="plano">
+							      	<option value="" selected>Selecione o plano</option>
+							      	<% planos.forEach(item => { %>
+										<option value=<%=item.desconto%> ><%=item.plano %></option>
+							  		<%})%>
+							    </select>
+							    <label>Plano</label>
+					        </div>
+				      	</div>
+
+				      	<div class="row hide" name="valores" id="valores">
+				      		<div class="row">
+					      		<div class="card col s12 m6 grey lighten-4">
+					      			<div class="card-title center"><span><h6>Valor <b>com</b> plano</h6></span></div>
+					      			<div class="card-content">
+					      				<p style="text-align:center" name="valorComPlano" id="valorComPlano"></p>
+					      			</div>
+					      		</div>
+					      		<div class="card col s12 m6 grey lighten-4">
+					      			<div class="card-title center"><span><h6>Valor <b>sem</b> plano</h6></span></div>
+					      			<div class="card-content">
+					      				<p style="text-align:center" name="valorSemPlano" id="valorSemPlano"></p>
+					      			</div>
+					      		</div>
+					      	</div>
+					      	<div class="row">
+				      			  <ul class="collapsible expandable">
+								    <li>
+								      <div class="collapsible-header"><i class="material-icons">expand_more</i>Saiba Mais</div>
+								      <div class="collapsible-body">
+								      	<span>Calculo valor <b>com</b> plano = Minutos excedentes x (Valor da tarifa + 10%)</span>
+								      	<p name="calculoComPlano" id="calculoComPlano"></p>
+								      </div>
+								      <div class="collapsible-body">
+								      	<span>Calculo valor <b>sem</b> plano = Tempo gasto x Valor da tarifa</span>
+								      	<p name="calculoSemPlano" id="calculoSemPlano"></p>
+								      </div>
+								    </li>
+								  </ul>
+					      	</div>
+				      	</div>
+			      	</div>
+			      	<div class="card-action center">
+			      		<button id="btnLimpar" name="Limpar" class="btn waves-effect waves-light red lighten-2" onclick="limpaDados()">
+						    Limpar
+						</button>	
+		      			<button id="btnCalc" name="btnCalc" class="btn waves-effect waves-light" onclick="calculaCotacao()">
+						    Calcular
+						</button>							
+			      	</div>
+		      	</div>
+		      </div>
+			</form>
+		</main>
+
+		<%include ../partials/footer %>
+
+	</body>
+
+</html>

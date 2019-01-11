@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<%include ../partials/head %>
+	<%include ../partials/header %>
+
+	<body>
+		<main style="margin-top: 3%">
+			<input type="hidden" name="host" id="host" value="<%=host%>">
+			<div class="row">
+				<div class="card col s12 m6 offset-m3">
+					<div class="card-title center"><span><h4>Sobre o produto FaleMais.</h4></span></div>
+					<div class="card-content">		
+						<div class="row">
+							<div>
+								<table class="responsive-table centered striped">
+									<thead>
+										<tr>
+											<th><b>Excluir</b></th>
+											<th><b>ID</b></th>
+											<th><b>Código Origem</b></th>
+											<th><b>Código Destino</b></th>							
+											<th><b>Tarifa</b></th>							
+										</tr>
+									</thead>
+
+									<tbody>
+										<%destinos.forEach( item => { %>
+										<tr>
+											<td>
+												<p>
+											      <label>
+											        <input type="checkbox" value="<%=item.id%>"/>
+											        <span></span>
+											      </label>
+											    </p>
+											</td>
+											<td><%=item.id%></td>
+											<td><%=item.origem%></td>
+											<td><%=item.destino%></td>
+											<td>R$ <%=item.tarifa%></td>
+										</tr>
+										<%})%>
+									</tbody>
+								</table>
+							</div>
+
+							<button id="btnDelete" name="btnDelete" class="btn waves-effect waves-light red lighten-2" onclick="deleteDestinos()">
+							    Excluir
+							</button>
+
+						</div>
+						<div class="row">
+							<form action="/destinos/create" method="post">
+								<div class="card">
+									<div class="card-title center"><span>Adicionar Destino</span></div>
+									<div class="card-content">
+										<div class="row">
+											<div class="col s12">
+												<input placeholder="Origem" id="origem" name="origem" type="number" min="1" class="validate">
+											</div>
+										</div>
+										<div class="row">
+											<div class="col s12">
+												<input placeholder="Destino" id="destino" name="destino" type="number" class="validate">
+											</div>
+										</div>
+										<div class="row">
+											<div class="col s12">
+												<input placeholder="Tarifa" id="tarifa" name="tarifa" type="text" class="validate">
+											</div>
+										</div>
+									</div>
+									<div class="card-action center">
+										<button id="btnAdd" name="btnAdd" class="btn waves-effect waves-light" type="submit">
+										    Adicionar
+										</button>
+									</div>
+								</div>
+							</form>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+	<%include ../partials/footer %>
+	</body>
+
+</html>
