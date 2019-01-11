@@ -1,14 +1,22 @@
-const deleteDestinos = () => {
+const deleteDestinos = async () => {
 
 	const itens = checkBoxes()
 	const url = `${host.value}/destinos/delete/${itens}`
 	console.log('Delete destinos', url)
-	fetch(url , {
-    	method: 'delete'
-  	})
-  	.then(response => console.log(response))
-  	.then(refreshPage())
-  	.catch(error => M.toast({html: error, classes: 'rounded'}))
+
+	const xhr = new XMLHttpRequest();
+	xhr.open("DELETE", url);
+	xhr.onload = function () {
+		var response = JSON.parse(xhr.responseText);
+		if (xhr.readyState == 4 && xhr.status == "200") {
+			console.log(response);
+		} else {
+			console.log(response);
+		}
+	}
+	await xhr.send(null);
+
+	refreshPage()
 }
 
 const deletePlanos = () => {
@@ -16,12 +24,20 @@ const deletePlanos = () => {
 	const itens = checkBoxes()
 	const url = `${host.value}/planos/delete/${itens}`
 	console.log('Delete planos', url)
-	fetch(url , {
-    	method: 'delete'
-  	})
-  	.then(response => console.log(response))
-  	.then(refreshPage())
-  	.catch(error => M.toast({html: error, classes: 'rounded'}))
+	
+	const xhr = new XMLHttpRequest();
+	xhr.open("DELETE", url);
+	xhr.onload = function () {
+		var response = JSON.parse(xhr.responseText);
+		if (xhr.readyState == 4 && xhr.status == "200") {
+			console.log(response);
+		} else {
+			console.log(response);
+		}
+	}
+	await xhr.send(null);
+
+	refreshPage()
 }
 
 const refreshPage = () => {
