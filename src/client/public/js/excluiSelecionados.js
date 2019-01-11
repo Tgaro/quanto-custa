@@ -6,7 +6,8 @@ const deleteDestinos = () => {
 	fetch(url , {
     	method: 'delete'
   	})
-  	.then(response => refreshPage())
+  	.then(response => console.log(response))
+  	.then(refreshPage())
   	.catch(error => M.toast({html: error, classes: 'rounded'}))
 }
 
@@ -18,7 +19,8 @@ const deletePlanos = () => {
 	fetch(url , {
     	method: 'delete'
   	})
-  	.then(response => refreshPage())
+  	.then(response => console.log(response))
+  	.then(refreshPage())
   	.catch(error => M.toast({html: error, classes: 'rounded'}))
 }
 
