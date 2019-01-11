@@ -1,7 +1,9 @@
 const deleteDestinos = () => {
 
 	const itens = checkBoxes()
-	fetch(`${host.value}/destinos/delete/${itens}` , {
+	const url = `${host.value}/destinos/delete/${itens}`
+	console.log('Delete destinos', url)
+	fetch(url , {
     	method: 'delete'
   	})
   	.then(response => refreshPage())
@@ -12,7 +14,9 @@ const deleteDestinos = () => {
 const deletePlanos = () => {
 
 	const itens = checkBoxes()
-	fetch(`${host.value}/planos/delete/${itens}` , {
+	const url = `${host.value}/planos/delete/${itens}`
+	console.log('Delete planos', url)
+	fetch(url , {
     	method: 'delete'
   	})
   	.then(response => refreshPage())
